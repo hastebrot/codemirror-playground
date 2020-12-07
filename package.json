@@ -1,0 +1,16 @@
+{
+  "name": "codemirror-playground",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "esbuild index.js --outfile=dist/index.esm.js --bundle --format=esm --minify --keep-names",
+    "start": "browser-sync start --server --index 'index.html' --watch --files '*.html' --files '*.esm.js'"
+  },
+  "devDependencies": {
+    "@codemirror/next": "^0.15.0",
+    "browser-sync": "^2.26.13",
+    "esbuild": "^0.8.20",
+    "tailwindcss": "^2.0.1"
+  }
+}
