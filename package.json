@@ -4,8 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "build": "npm run build:js && npm run build:css",
     "build:js": "esbuild index.js --outfile=dist/index.esm.js --bundle --format=esm --minify --keep-names",
-    "build:css": "tailwind --output dist/index.css --watch",
+    "build:css": "tailwind --output dist/index.css",
     "start": "browser-sync start --server --index 'index.html' --watch --files '*.html' --files '*.esm.js' --no-ui --no-online --no-notify"
   },
   "devDependencies": {

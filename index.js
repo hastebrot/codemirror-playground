@@ -4,24 +4,33 @@ import { defaultKeymap } from "@codemirror/commands";
 import { defaultHighlightStyle } from "@codemirror/highlight";
 import { javascript } from "@codemirror/lang-javascript";
 
+// https://github.com/tailwindlabs/tailwindcss/blob/v2.2.4/stubs/defaultConfig.stub.js
 const tailwindTheme = require("tailwindcss/defaultTheme");
 
+// https://github.com/codemirror/basic-setup/blob/0.18.2/src/basic-setup.ts
 const setup = [
   defaultHighlightStyle.fallback,
   highlightActiveLine(),
   keymap.of([...defaultKeymap]),
 ];
 
+// https://github.com/codemirror/view/blob/0.18.17/src/theme.ts
 const theme = EditorView.theme({
-  $: {
-    "&$focused": { outline: "none" },
+  "&": {
+    "&.cm-focused": {
+      outline: "none",
+    },
   },
-  $scroller: {
+  ".cm-scroller": {
     fontFamily: tailwindTheme.fontFamily.mono.join(", "),
+    lineHeight: 1.3,
   },
-  $content: {
+  ".cm-content": {
     padding: "0",
   },
+  ".cm-activeLine": {
+    backgroundColor: tailwindTheme.colors.gray[100],
+  }
 });
 
 const language = javascript();
