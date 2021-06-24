@@ -9,7 +9,11 @@
     "start": "browser-sync start --server --index 'index.html' --watch --files '*.html' --files '*.esm.js' --no-ui --no-online --no-notify"
   },
   "devDependencies": {
-    "@codemirror/next": "^0.15.0",
+    "@codemirror/commands": "^0.18.3",
+    "@codemirror/highlight": "^0.18.4",
+    "@codemirror/lang-javascript": "^0.18.0",
+    "@codemirror/state": "^0.18.7",
+    "@codemirror/view": "^0.18.17",
     "browser-sync": "^2.27.1",
     "esbuild": "^0.12.9",
     "tailwindcss": "^2.2.4",

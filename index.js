@@ -1,11 +1,16 @@
-import { EditorView, keymap } from "@codemirror/next/view";
-import { EditorState } from "@codemirror/next/state";
-import { defaultKeymap } from "@codemirror/next/commands";
-import { defaultHighlightStyle } from "@codemirror/next/highlight";
-import { highlightActiveLine } from "@codemirror/next/highlight-selection";
-import { javascript } from "@codemirror/next/lang-javascript";
+import { EditorView, keymap, highlightActiveLine } from "@codemirror/view";
+import { EditorState } from "@codemirror/state";
+import { defaultKeymap } from "@codemirror/commands";
+import { defaultHighlightStyle } from "@codemirror/highlight";
+import { javascript } from "@codemirror/lang-javascript";
 
 const tailwindTheme = require("tailwindcss/defaultTheme");
+
+const setup = [
+  defaultHighlightStyle.fallback,
+  highlightActiveLine(),
+  keymap.of([...defaultKeymap]),
+];
 
 const theme = EditorView.theme({
   $: {
@@ -19,15 +24,13 @@ const theme = EditorView.theme({
   },
 });
 
-const setup = [
-  defaultHighlightStyle,
-  highlightActiveLine(),
-  keymap([...defaultKeymap]),
-];
+const language = javascript();
 
 const view = new EditorView({
-  state: EditorState.create({ extensions: [setup, theme, javascript()] }),
   parent: document.querySelector("#editor"),
+  state: EditorState.create({
+    extensions: [setup, theme, language],
+  }),
 });
 
 const transaction = view.state.update({
