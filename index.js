@@ -27,7 +27,7 @@ const setup = [
 
 const view = new EditorView({
   state: EditorState.create({ extensions: [setup, theme, javascript()] }),
-  parent: document.body,
+  parent: document.querySelector("#editor"),
 });
 
 const transaction = view.state.update({
